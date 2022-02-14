@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reactivity System</title>
+    <script src="dep.js"></script>
+    <script src="watcher.js"></script>
+    <script src="observer.js"></script>
+  </head>
+
+  <body>
+    <input
+      type="text"
+      placeholder="Price"
+      onkeyup="window.data.price = this.value"
+    />
+    <input
+      type="text"
+      placeholder="Quantity"
+      onkeyup="window.data.quantity  = this.value"
+    />
+    <span id="total"></span>
+    <script>
+      window.data = {
+        price: 0,
+        quantity: 0,
+      };
+      walk(window.data);
+
+      const watcher = new Watcher(
+        () => `Total: ${window.data.quantity * window.data.price}`,
+        (val) => renderTotal(val)
+      );
+
+      function renderTotal(val) {
+        const totalElem = document.querySelector("#total");
+        totalElem.innerHTML = val;
+      }
+    </script>
+  </body>
+</html>
