@@ -121,7 +121,7 @@ export default {
       if (confirm("¿Está seguro que desea eliminar todos los tutoriales?")) {
         axios
           .delete("http://localhost:3000/tutorials/mass_delete")
-          .then((response) => {
+          .then(() => {
             this.getAll();
           })
           .catch((error) => {

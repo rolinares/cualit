@@ -161,7 +161,7 @@ export default {
       if (confirm("¿Está seguro que desea eliminar el tutorial?")) {
         axios
           .delete(`http://localhost:3000/tutorials/${this.$route.params.id}`)
-          .then((response) => {
+          .then(() => {
             this.$router.push("/");
           })
           .catch((error) => {
